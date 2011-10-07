@@ -1,0 +1,11 @@
+#scheduleContent table {
+    border-collapse: collapse;
+}
+#scheduleContent td,
+#scheduleContent th {
+    padding: .5em .7em;
+    border: 1px solid #666;
+}
+.periodCell {
+    color: #999;
+}
