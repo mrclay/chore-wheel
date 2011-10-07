@@ -20,6 +20,10 @@
         location.href = location.href.replace(/[\?#].*/, '') + '?' + search + '#schedule';
     });
 
+    $('#resetButton').live('click', function () {
+        location.href = location.href.replace(/[\?#].*/, '');
+    });
+
     $('#schedule').live('pageinit', function(event) {
         function esc(txt) {
             return txt.replace(/&/g, '&amp;').replace(/</g, '&lt;');
