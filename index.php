@@ -45,7 +45,7 @@ function showPage($minifyIsAvailable = false) {
             <textarea cols="40" rows="8" name="chores" id="chores">Clean Sink,Clean Microwave,Wash Dishes,Fridge Patrol</textarea>
         </div>
 
-        <p><button type="button" id="schedButton" data-theme="b" data-inline="true">Make Schedule</button>
+        <p><button type="button" id="schedButton" data-theme="b" data-inline="true">Generate New Schedule</button>
            <button type="button" id="resetButton" data-theme="d" data-inline="true" data-icon="delete">reset</button>
         </p>
 	</div>
@@ -82,6 +82,12 @@ if (! is_file($_SERVER['DOCUMENT_ROOT'] . '/min/lib/Minify.php')) {
     exit;
 }
 
+function getContent() {
+    ob_start();
+    showPage(true);
+    return ob_get_clean();
+}
+
 set_include_path($_SERVER['DOCUMENT_ROOT'] . '/min/lib/' . PATH_SEPARATOR . get_include_path());
 require 'Minify.php';
 Minify::setCache(sys_get_temp_dir());
@@ -89,10 +95,6 @@ Minify::serve('Files', array(
     'files' => new Minify_Source(array(
         'id' => md5(__FILE__),
         'contentType' => Minify::TYPE_HTML,
-        'getContentFunc' => function () {
-            ob_start();
-            showPage(true);
-            return ob_get_clean();
-        },
+        'getContentFunc' => 'getContent',
     ))
 ));
