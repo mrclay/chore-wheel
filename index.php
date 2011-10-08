@@ -33,8 +33,7 @@ function showPage($minifyIsAvailable = false) {
 	</div>
 
 	<div data-role="content">
-		<h2>Settings</h2>
-        <p>Who's chipping in and what needs to be done?</p>
+		<p>Who's working and what needs to be done?</p>
 
         <div data-role="fieldcontain">
             <label for="names">Persons: <small>(comma-separated)</small></label>
