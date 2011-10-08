@@ -38,7 +38,7 @@
             i,
             j;
 
-        var assignments = MrClay.assignChores(names.length, chores.length),
+        var assignments = MrClay.assignChores(names.length, chores.length, true),
             numAssignments = assignments.length;
 
         markup += '<table><tr><th class="periodCell">Period</th>';
