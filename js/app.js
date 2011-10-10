@@ -31,7 +31,6 @@
 
         var urlVars = qs.get(),
             names = urlVars.n.split(/\s*,\s*/),
-            numNames = names.length,
             chores = urlVars.c.split(/\s*,\s*/),
             numChores = chores.length,
             markup = '',
