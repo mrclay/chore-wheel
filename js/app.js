@@ -12,10 +12,11 @@
 
     $('#schedButton').live('click', function () {
         var names = $.trim($('#names').val()).split(/\s*,\s*/);
-        MrClay.shuffleArray(names);
+        //MrClay.shuffleArray(names);
         var search = MrClay.QueryString.toString({
-            n: names.join(','),
-            c: $.trim($('#chores').val())
+            n: names.join(','), // names
+            c: $.trim($('#chores').val()), // chores
+            s: new Date().getTime() // random seed
         });
         location.href = location.href.replace(/[\?#].*/, '') + '?' + search + '#schedule';
     });
@@ -32,6 +33,7 @@
         var urlVars = qs.get(),
             names = urlVars.n.split(/\s*,\s*/),
             chores = urlVars.c.split(/\s*,\s*/),
+            randomSeed = urlVars.s,
             numChores = chores.length,
             markup = '',
             i,
@@ -39,6 +41,12 @@
 
         var assignments = MrClay.assignChores(names.length, chores.length, true),
             numAssignments = assignments.length;
+
+        // we use MersenneTwister so the shuffle is deterministic based on URL
+        MrClay.shuffleArray(assignments, new MersenneTwister(randomSeed));
+
+        //var assignmentsByName = [];
+        //for (i = 0; i < names.length)
 
         markup += '<table><tr><th class="periodCell">Period</th>';
         for (i = 0; i < numChores; i++) {

@@ -16,11 +16,12 @@ function showPage($minifyIsAvailable = false) {
 <?php endif; ?>
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <?php if ($minifyIsAvailable): ?>
-    <script src="/min/b=<?php echo $path ?>/js&f=MrClay/shuffleArray.js,MrClay/assignChores.js,MrClay/QueryString.js,app.js"></script>
+    <script src="/min/b=<?php echo $path ?>/js&amp;f=MrClay/shuffleArray.js,MrClay/assignChores.js,MrClay/QueryString.js,MersenneTwister.js,app.js"></script>
 <?php else: ?>
     <script src="js/MrClay/shuffleArray.js"></script>
     <script src="js/MrClay/assignChores.js"></script>
     <script src="js/MrClay/QueryString.js"></script>
+    <script src="js/MersenneTwister.js"></script>
     <script src="js/app.js"></script>
 <?php endif; ?>
     <script src="http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.min.js"></script>
